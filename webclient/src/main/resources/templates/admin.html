@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>googol</title>
+    <script defer src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script defer src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script defer th:src="@{js/websocket.js}"></script>
+</head>
+<body>
+<h1>Googol</h1>
+<div >
+    <h1>Top Searches</h1>
+    <ol id="searches">
+        <li th:each="search : ${topSearches}" th:text="${search}"></li>
+    </ol>
+</div>
+<div>
+    <table id="barrels">
+        <tr>
+            <th>Barrel</th>
+            <th>Time/ds</th>
+        </tr>
+        <tr th:each="barrel : ${barrelMetrics}">
+            <td th:text="${barrel.barrelId}"></td>
+            <td th:text="${barrel.average}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
